@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
   },
-  generator: "v0.app",
+  generator: "Ludimint",
 };
 
 export const viewport: Viewport = {
