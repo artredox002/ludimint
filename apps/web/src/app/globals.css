@@ -2,71 +2,54 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap');
+
 @layer base {
   :root {
-    --border: 214.3 31.8% 91.4%;
-    --input: 216 33% 97%;
-    --ring: 215 20.2% 65.1%;
+    /* LUDIMINT Design System Colors */
+    --bg-900: #0b0f13;
+    --bg-800: #0f161a;
+    --bg-700: #162024;
+    --fg-100: #e6f0f6;
+    --fg-80: #c8d6dd;
+    --muted: #93a6ad;
+    --primary-500: #00d1c7;
+    --primary-600: #00bfb6;
+    --primary-700: #00a79f;
+    --accent-500: #a870ff;
+    --accent-600: #945bff;
+    --success-500: #24d39a;
+    --warning-500: #ffb454;
+    --danger-500: #ff6b6b;
+    --glass-30: rgba(255, 255, 255, 0.03);
+    --glass-60: rgba(255, 255, 255, 0.06);
+    --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.5);
+    --shadow-2: 0 6px 18px rgba(0, 0, 0, 0.6);
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
 
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
+    /* shadcn/ui compatibility */
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --ring: 180 100% 40%;
+    --background: 210 20% 6%;
+    --foreground: 210 40% 96%;
+    --card: 210 20% 8%;
+    --card-foreground: 210 40% 96%;
+    --popover: 210 20% 8%;
+    --popover-foreground: 210 40% 96%;
+    --primary: 180 100% 40%;
+    --primary-foreground: 210 20% 6%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 260 100% 70%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --radius: 0.75rem;
   }
 }
 
@@ -74,7 +57,264 @@
   * {
     @apply border-border;
   }
+  
   body {
-    @apply bg-background text-foreground;
+    @apply bg-bg-900 text-fg-100 antialiased;
+    background-color: var(--bg-900);
+    color: var(--fg-100);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Sora', 'Inter', sans-serif;
+    font-weight: 700;
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* Buttons */
+  .btn-primary {
+    background-color: var(--primary-600);
+    color: var(--bg-900);
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 200ms ease;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--primary-500);
+    transform: translateY(-2px);
+  }
+
+  .btn-primary:active {
+    transform: translateY(1px);
+  }
+
+  .btn-secondary {
+    color: var(--primary-600);
+    border: 1px solid var(--primary-600);
+    background-color: transparent;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 200ms ease;
+    cursor: pointer;
+  }
+
+  .btn-secondary:hover {
+    background-color: rgba(0, 209, 199, 0.1);
+    transform: translateY(-2px);
+  }
+
+  /* Badges */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 8px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    gap: 4px;
+  }
+
+  .badge-success {
+    background-color: rgba(36, 211, 154, 0.2);
+    color: var(--success-500);
+  }
+
+  .badge-warning {
+    background-color: rgba(255, 180, 84, 0.2);
+    color: var(--warning-500);
+  }
+
+  .badge-danger {
+    background-color: rgba(255, 107, 107, 0.2);
+    color: var(--danger-500);
+  }
+
+  /* Glass panels */
+  .glass-panel {
+    background-color: rgba(15, 22, 26, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    backdrop-filter: blur(12px);
+  }
+
+  /* Input field */
+  .input-field {
+    background-color: var(--bg-700);
+    color: var(--fg-100);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 14px;
+    transition: all 200ms ease;
+  }
+
+  .input-field::placeholder {
+    color: var(--muted);
+  }
+
+  .input-field:focus {
+    outline: none;
+    border-color: var(--primary-600);
+    box-shadow: 0 0 0 2px rgba(0, 209, 199, 0.1);
+  }
+
+  /* Card base */
+  .card-base {
+    background-color: var(--bg-700);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    padding: 16px;
+    transition: all 200ms ease;
+  }
+
+  .card-base:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Text balance */
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-bg-800/60 backdrop-blur-md border border-white/10;
+  }
+  
+  .text-muted {
+    color: var(--fg-80) !important;
+  }
+  
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .mono {
+    font-family: 'Inter Mono', 'JetBrains Mono', 'Courier New', monospace;
+    letter-spacing: 0.02em;
+  }
+
+  /* Animations */
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .fade-in {
+    animation: fade-in 220ms cubic-bezier(0.2, 0.9, 0.3, 1);
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+    100% {
+      background-position: 1000px 0;
+    }
+  }
+
+  .shimmer {
+    animation: shimmer 2s linear infinite;
+    background: linear-gradient(90deg, var(--bg-700) 25%, #1a2a34 50%, var(--bg-700) 75%);
+    background-size: 1000px 100%;
+  }
+
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.6;
+    }
+  }
+
+  .pulse-glow {
+    animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* Page transitions */
+  .page-enter {
+    animation: fade-in 300ms cubic-bezier(0.2, 0.9, 0.3, 1);
+  }
+
+  /* Smooth scroll */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Better focus states */
+  *:focus-visible {
+    outline: 2px solid var(--primary-600);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Selection */
+  ::selection {
+    background-color: var(--primary-600);
+    color: var(--bg-900);
+  }
+}
+
+/* RainbowKit Modal Styling */
+@layer base {
+  :root {
+    --rk-border-radius: 6px;
+  }
+}
+
+/* Custom RainbowKit styles to match design system */
+[data-rk] {
+  --rk-accent-color: #00bfb6;
+  --rk-accent-color-foreground: #0b0f13;
+  --rk-border-radius: 6px;
+}
+
+[data-rk] button {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 600 !important;
+  transition: all 200ms cubic-bezier(0.2, 0.9, 0.3, 1) !important;
+}
+
+[data-rk] [data-rk-modal] {
+  background: #0f161a !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+[data-rk] [data-rk-modal] button[data-rk-connect-button] {
+  background: #00bfb6 !important;
+  color: #0b0f13 !important;
+}
+
+[data-rk] [data-rk-modal] button[data-rk-connect-button]:hover {
+  background: #00d1c7 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 16px rgba(0, 191, 182, 0.2) !important;
 }

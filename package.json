@@ -1,7 +1,7 @@
 {
-  "name": "Ludimint",
+  "name": "LUDIMINT",
   "version": "0.1.0",
-  "description": "Ludimint is a mobile-first, fully decentralised micro-tournament platform where users compete in short, skill-based challenges and earn small stablecoin rewards via MiniPay on the Celo network. Spectators can optionally create tiny side-pools to support or back challengers, creating social engagement without promoting gambling. The app emphasises trustless prize distribution, minimal friction for onboarding, and a strong mobile UX that runs as a Progressive Web App or React Native app that integrates with MiniPay deeplinks.",
+  "description": "LUDIMINT is a mobile-first, fully decentralised micro-tournament platform where users compete in short, skill-based challenges and earn small stablecoin rewards via MiniPay on the Celo network. Spectators can optionally create tiny side-pools to support or back challengers, creating social engagement without promoting gambling. The app emphasises trustless prize distribution, minimal friction for onboarding, and a strong mobile UX that runs as a Progressive Web App or React Native app that integrates with MiniPay deeplinks.",
   "private": true,
   "scripts": {
     "build": "turbo build",
@@ -25,5 +25,8 @@
   "engines": {
     "node": ">=18.0.0",
     "pnpm": ">=8.0.0"
+  },
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "^2.2.0"
   }
 }

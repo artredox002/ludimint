@@ -1,6 +1,6 @@
-# Ludimint
+# LUDIMINT
 
-Ludimint is a mobile-first, fully decentralised micro-tournament platform where users compete in short, skill-based challenges and earn small stablecoin rewards via MiniPay on the Celo network. Spectators can optionally create tiny side-pools to support or back challengers, creating social engagement without promoting gambling. The app emphasises trustless prize distribution, minimal friction for onboarding, and a strong mobile UX that runs as a Progressive Web App or React Native app that integrates with MiniPay deeplinks.
+LUDIMINT is a mobile-first, fully decentralised micro-tournament platform where users compete in short, skill-based challenges and earn small stablecoin rewards via MiniPay on the Celo network. Spectators can optionally create tiny side-pools to support or back challengers, creating social engagement without promoting gambling. The app emphasises trustless prize distribution, minimal friction for onboarding, and a strong mobile UX that runs as a Progressive Web App or React Native app that integrates with MiniPay deeplinks.
 
 A modern Celo blockchain application built with Next.js, TypeScript, and Turborepo.
 

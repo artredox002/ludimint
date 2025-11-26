@@ -6,8 +6,31 @@ import { injectedWallet } from "@rainbow-me/rainbowkit/wallets";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { WagmiProvider, createConfig, http, useConnect } from "wagmi";
-import { celo, celoAlfajores } from "wagmi/chains";
+import { defineChain } from "viem";
 import { ConnectButton } from "./connect-button";
+
+// Define Celo Sepolia testnet chain
+const celoSepolia = defineChain({
+  id: 11142220,
+  name: "Celo Sepolia",
+  nativeCurrency: {
+    decimals: 18,
+    name: "CELO",
+    symbol: "CELO",
+  },
+  rpcUrls: {
+    default: {
+      http: ["https://forno.celo-sepolia.celo-testnet.org"],
+    },
+  },
+  blockExplorers: {
+    default: {
+      name: "Celo Sepolia Explorer",
+      url: "https://celo-sepolia.blockscout.com",
+    },
+  },
+  testnet: true,
+});
 
 const connectors = connectorsForWallets(
   [
@@ -17,17 +40,16 @@ const connectors = connectorsForWallets(
     },
   ],
   {
-    appName: "Ludimint",
-    projectId: process.env.NEXT_PUBLIC_WC_PROJECT_ID!,
+    appName: "LUDIMINT",
+    projectId: process.env.NEXT_PUBLIC_WC_PROJECT_ID || "default-project-id",
   }
 );
 
 const wagmiConfig = createConfig({
-  chains: [celo, celoAlfajores],
+  chains: [celoSepolia],
   connectors,
   transports: {
-    [celo.id]: http(),
-    [celoAlfajores.id]: http(),
+    [celoSepolia.id]: http(),
   },
   ssr: true,
 });

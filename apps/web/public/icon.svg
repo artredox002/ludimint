@@ -1,0 +1,21 @@
+<svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="iconPrimaryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d1c7" />
+      <stop offset="100%" stop-color="#00bfb6" />
+    </linearGradient>
+    <linearGradient id="iconAccentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a870ff" />
+      <stop offset="100%" stop-color="#945bff" />
+    </linearGradient>
+  </defs>
+
+  <rect width="120" height="120" rx="24" fill="url(#iconPrimaryGradient)"/>
+
+  <path d="M 30 30 L 30 70 L 50 70 L 50 50 L 40 50 L 40 60 L 30 60 Z" fill="#0b0f13"/>
+
+  <path d="M 55 30 L 55 70 L 65 70 L 65 45 L 70 55 L 75 45 L 75 70 L 85 70 L 85 30 L 75 30 L 75 50 L 70 40 L 65 50 L 65 30 Z" fill="url(#iconAccentGradient)"/>
+
+  <circle cx="95" cy="35" r="8" fill="#0b0f13"/>
+  <circle cx="95" cy="35" r="5" fill="url(#iconAccentGradient)"/>
+</svg>

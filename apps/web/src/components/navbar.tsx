@@ -1,9 +1,10 @@
 "use client"
 
 import Link from "next/link"
-import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { Menu, ExternalLink } from "lucide-react"
+import { useAccount } from "wagmi"
+import { useEffect, useState } from "react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -11,19 +12,38 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import { WalletConnectButton } from "@/components/connect-button"
+import { ConnectButton } from "@/components/connect-button"
+import { LogoText } from "@/components/logo-text"
+import { BalanceDisplay } from "@/components/balance-display"
 
-const navLinks = [
+// Landing page navigation (shown when not connected)
+const landingNavLinks = [
   { name: "Home", href: "/" },
-  { name: "Docs", href: "https://docs.celo.org", external: true },
+]
+
+// App navigation (shown when connected)
+const appNavLinks = [
+  { name: "Tournaments", href: "/tournaments" },
+  { name: "Create", href: "/create" },
+  { name: "Profile", href: "/profile" },
 ]
 
 export function Navbar() {
   const pathname = usePathname()
-  
+  const { isConnected } = useAccount()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  // Determine which navigation to show
+  // Show app navigation when connected, landing nav when not connected
+  const navLinks = (mounted && isConnected) ? appNavLinks : landingNavLinks
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 max-w-screen-2xl items-center justify-between px-4">
+    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-bg-900/95 backdrop-blur-md supports-[backdrop-filter]:bg-bg-900/80">
+      <div className="container flex h-16 max-w-screen-2xl items-center justify-between px-4 md:px-6">
         <div className="flex items-center gap-2">
           {/* Mobile menu button */}
           <Sheet>
@@ -35,10 +55,7 @@ export function Navbar() {
             </SheetTrigger>
             <SheetContent side="left" className="w-80">
               <div className="flex items-center gap-2 mb-8">
-
-                <span className="font-bold text-lg">
-                  Ludimint
-                </span>
+                <LogoText size="sm" />
               </div>
               <nav className="flex flex-col gap-4">
                 {navLinks.map((link) => (
@@ -47,8 +64,10 @@ export function Navbar() {
                     href={link.href}
                     target={link.external ? "_blank" : undefined}
                     rel={link.external ? "noopener noreferrer" : undefined}
-                    className={`flex items-center gap-2 text-base font-medium transition-colors hover:text-primary ${
-                      pathname === link.href ? "text-foreground" : "text-foreground/70"
+                    className={`flex items-center gap-2 text-base font-medium transition-colors ${
+                      pathname === link.href 
+                        ? "text-primary-600 font-semibold" 
+                        : "text-fg-80 hover:text-primary-500"
                     }`}
                   >
                     {link.name}
@@ -56,21 +75,14 @@ export function Navbar() {
                   </Link>
                 ))}
                 <div className="mt-6 pt-6 border-t">
-                  <Button asChild className="w-full">
-                    <WalletConnectButton />
-                  </Button>
+                  <ConnectButton />
                 </div>
               </nav>
             </SheetContent>
           </Sheet>
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-
-            <span className="hidden font-bold text-xl sm:inline-block">
-              Ludimint
-            </span>
-          </Link>
+          <LogoText size="md" />
         </div>
         
         {/* Desktop navigation */}
@@ -81,10 +93,10 @@ export function Navbar() {
               href={link.href}
               target={link.external ? "_blank" : undefined}
               rel={link.external ? "noopener noreferrer" : undefined}
-              className={`flex items-center gap-1.5 text-sm font-medium transition-colors hover:text-primary ${
+              className={`flex items-center gap-1.5 text-sm font-medium transition-colors ${
                 pathname === link.href
-                  ? "text-foreground"
-                  : "text-foreground/70"
+                  ? "text-primary-600 font-semibold"
+                  : "text-fg-80 hover:text-primary-500"
               }`}
             >
               {link.name}
@@ -93,7 +105,10 @@ export function Navbar() {
           ))}
           
           <div className="flex items-center gap-3">
-            <WalletConnectButton />
+            {mounted && isConnected && (
+              <BalanceDisplay compact className="hidden md:flex" />
+            )}
+            <ConnectButton />
           </div>
         </nav>
       </div>

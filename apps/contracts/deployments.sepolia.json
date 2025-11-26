@@ -1,0 +1,10 @@
+{
+  "network": "celo-sepolia",
+  "chainId": 11142220,
+  "deployer": "0x1a0a85fd9e79562e85a0861c509e0c2239a6d0d5",
+  "contracts": {
+    "reputationNFT": "0x188d4d257a28839449e8a2fae6ba42e2f8a41196",
+    "tournamentFactory": "0x9efd2c4c69c9d05b2877164975823a5161f77698"
+  },
+  "deployedAt": "2025-11-25T04:23:19.100Z"
+}
