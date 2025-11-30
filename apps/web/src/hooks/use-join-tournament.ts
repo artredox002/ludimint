@@ -470,7 +470,7 @@ export function useJoinTournament() {
                 if (retryAllowance < params.entryFee) {
                   console.warn('[Join Tournament] Allowance still insufficient, waiting longer...');
                   // Wait longer and check again
-                  await new Promise(resolve => setTimeout(resolve, 5000));
+              await new Promise(resolve => setTimeout(resolve, 5000));
                   
                   // Check one more time
                   const finalRetryAllowance = await publicClient.readContract({
@@ -526,7 +526,7 @@ export function useJoinTournament() {
                 if (errorMsg.includes("returned no data") || errorMsg.includes("not a contract")) {
                   toast.error("Cannot verify token allowance due to network issues. Please try the join transaction again - if it fails, approve the token again.");
                 } else {
-                  toast.error("Token allowance issue persists. Please manually approve the token in your wallet and try again.");
+              toast.error("Token allowance issue persists. Please manually approve the token in your wallet and try again.");
                 }
               }
               
@@ -569,7 +569,7 @@ export function useJoinTournament() {
         } catch (writeError) {
           console.error(`[Join Tournament] writeContractAsync error (attempt ${joinAttempts}):`, writeError);
           
-          const errorString = JSON.stringify(writeError);
+            const errorString = JSON.stringify(writeError);
           const errorMessage = writeError instanceof Error ? writeError.message : String(writeError);
           const isAllowanceError = errorString.includes("allowance") || 
                                   errorString.includes("SafeERC20") || 

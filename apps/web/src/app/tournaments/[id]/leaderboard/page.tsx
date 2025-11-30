@@ -232,13 +232,13 @@ export default function LeaderboardPage() {
           <Card className="mt-8 border-primary-500/20 bg-primary-500/5">
             <CardContent className="p-6">
               <div className="flex items-center justify-between gap-4 flex-wrap">
-                <div>
-                  <p className="text-sm text-muted uppercase tracking-wide">Your Result</p>
-                  <p className="text-xl font-semibold text-fg-100">
-                    Score: {userEntry.score} • Prize:{" "}
-                    {userEntry.prize > 0n ? `${formatEther(userEntry.prize)} cUSD` : "—"}
-                  </p>
-                </div>
+              <div>
+                <p className="text-sm text-muted uppercase tracking-wide">Your Result</p>
+                <p className="text-xl font-semibold text-fg-100">
+                  Score: {userEntry.score} • Prize:{" "}
+                  {userEntry.prize > 0n ? `${formatEther(userEntry.prize)} cUSD` : "—"}
+                </p>
+              </div>
                 <div className="flex gap-3 flex-wrap">
                   {/* Claim button if user is a winner with unclaimed prize */}
                   {userEntry.prize > 0n && !userEntry.claimed && tournament?.finalized && tournamentAddress && (
@@ -250,9 +250,9 @@ export default function LeaderboardPage() {
                       />
                     </div>
                   )}
-                  <Button asChild variant="secondary">
-                    <Link href={`/tournaments/${tournamentAddress}`}>Back to Tournament</Link>
-                  </Button>
+              <Button asChild variant="secondary">
+                <Link href={`/tournaments/${tournamentAddress}`}>Back to Tournament</Link>
+              </Button>
                 </div>
               </div>
             </CardContent>

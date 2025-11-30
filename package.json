@@ -6,6 +6,7 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
+    "dev:minipay": "turbo dev --filter=web",
     "lint": "turbo lint",
     "clean": "turbo clean",
     "type-check": "turbo type-check",
@@ -14,7 +15,9 @@
     "contracts:deploy": "turbo run deploy --filter=hardhat",
     "contracts:deploy:alfajores": "turbo run deploy:alfajores --filter=hardhat",
     "contracts:deploy:sepolia": "turbo run deploy:sepolia --filter=hardhat",
-    "contracts:deploy:celo": "turbo run deploy:celo --filter=hardhat"
+    "contracts:deploy:celo": "turbo run deploy:celo --filter=hardhat",
+    "ngrok": "./scripts/start-ngrok.sh 3000",
+    "ngrok:dev": "./scripts/start-dev-with-ngrok.sh 3000"
   },
   "devDependencies": {
     "@types/node": "^20.8.0",
