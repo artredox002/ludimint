@@ -2,15 +2,19 @@
  * Get block explorer URL for Celo network
  */
 export function getExplorerUrl(chainId?: number): string {
-  // Default to Alfajores testnet
-  if (chainId === 44787 || !chainId) {
-    return "https://alfajores.celoscan.io"
-  }
-  // Mainnet
-  if (chainId === 42220) {
+  // Default to Mainnet
+  if (chainId === 42220 || !chainId) {
     return "https://celoscan.io"
   }
-  return "https://alfajores.celoscan.io"
+  // Alfajores testnet
+  if (chainId === 44787) {
+    return "https://alfajores.celoscan.io"
+  }
+  // Sepolia testnet
+  if (chainId === 11142220) {
+    return "https://celo-sepolia.blockscout.com"
+  }
+  return "https://celoscan.io"
 }
 
 /**

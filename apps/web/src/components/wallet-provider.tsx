@@ -9,10 +9,10 @@ import { WagmiProvider, createConfig, http, useConnect } from "wagmi";
 import { defineChain } from "viem";
 import { ConnectButton } from "./connect-button";
 
-// Define Celo Sepolia testnet chain
-const celoSepolia = defineChain({
-  id: 11142220,
-  name: "Celo Sepolia",
+// Define Celo Mainnet chain
+const celoMainnet = defineChain({
+  id: 42220,
+  name: "Celo",
   nativeCurrency: {
     decimals: 18,
     name: "CELO",
@@ -20,16 +20,16 @@ const celoSepolia = defineChain({
   },
   rpcUrls: {
     default: {
-      http: ["https://forno.celo-sepolia.celo-testnet.org"],
+      http: ["https://forno.celo.org"],
     },
   },
   blockExplorers: {
     default: {
-      name: "Celo Sepolia Explorer",
-      url: "https://celo-sepolia.blockscout.com",
+      name: "Celoscan",
+      url: "https://celoscan.io",
     },
   },
-  testnet: true,
+  testnet: false,
 });
 
 const connectors = connectorsForWallets(
@@ -46,10 +46,10 @@ const connectors = connectorsForWallets(
 );
 
 const wagmiConfig = createConfig({
-  chains: [celoSepolia],
+  chains: [celoMainnet],
   connectors,
   transports: {
-    [celoSepolia.id]: http(),
+    [celoMainnet.id]: http(),
   },
   ssr: true,
 });

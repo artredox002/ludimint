@@ -11,6 +11,7 @@
     "deploy:alfajores": "hardhat ignition deploy ignition/modules/Deploy.ts --network alfajores",
     "deploy:sepolia": "hardhat ignition deploy ignition/modules/Deploy.ts --network sepolia",
     "deploy:celo": "hardhat ignition deploy ignition/modules/Deploy.ts --network celo",
+    "deploy:celo:simple": "hardhat run scripts/deploy-celo-simple.ts --network celo",
     "deploy:sepolia:simple": "ts-node scripts/deploy-sepolia-simple.ts",
     "deploy:sepolia:js": "hardhat run scripts/deploy-sepolia.js --network sepolia",
     "verify": "hardhat verify",
