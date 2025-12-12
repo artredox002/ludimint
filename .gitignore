@@ -98,3 +98,17 @@ Thumbs.db
 
 # Turbo
 .turbo
+
+# Hardhat
+artifacts/
+cache/
+typechain-types/
+deployments/*.json
+!deployments/.gitkeep
+
+# Contract deployment artifacts (keep example deployments)
+!deployments.sepolia.json
+
+# Environment example files (keep these)
+!env-examples/
+!*.env.example
