@@ -978,4 +978,4 @@ For questions, issues, or contributions:
 
 ---
 
-*Last Updated: December 2024*
+*Last Updated: December 2025*
